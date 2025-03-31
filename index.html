@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie de Contacts</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('pngtree-vibrant-pink-and-blue-flowers-magical-glowing-pollen-ethereal-night-wallpaper-image_16625732.jpg') no-repeat center center/cover;
+            transform: translateZ(-1px) scale(2);
+            z-index: -1;
+        }
+        .gallery {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            padding: 50px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 260px;
+            position: relative;
+            overflow: hidden;
+            word-break: break-word;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px black);
+        }
+        .card a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+        .card a:hover {
+            color: #ffdd57;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".card").forEach(card => {
+                card.addEventListener("click", function() {
+                    const link = this.querySelector("a").href;
+                    window.open(link, "_blank");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="parallax-bg"></div>
+    <div class="gallery">
+        <div class="card" data-link="mailto:maxence.canival@etu.unicaen.fr">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+            <p><a href="mailto:maxence.canival@etu.unicaen.fr">maxence.canival@etu.unicaen.fr</a></p>
+        </div>
+        <div class="card" data-link="https://www.linkedin.com/in/maxence-canival-b87028345/">
+            <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn">
+            <p><a href="https://www.linkedin.com/in/maxence-canival-b87028345/" target="_blank">LinkedIn</a></p>
+        </div>
+        <div class="card" data-link="https://github.com/McMt27">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+            <p><a href="https://github.com/McMt27" target="_blank">GitHub</a></p>
+        </div>
+    </div>
+</body>
+</html>
